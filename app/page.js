@@ -1,7 +1,3 @@
-import Header from "@/components/header";
-
-import Image from "next/image";
-
 export default function Home() {
     return (
         <main className="">
@@ -31,6 +27,15 @@ export default function Home() {
                     </div>
                 </div>
                 <div className="my-10 w-full md:my-0">
+                    <iframe
+                        className="aspect-video self-stretch md:min-h-96 mx-auto w-full rounded-lg shadow-xl ring-1 ring-black ring-opacity-5"
+                        src="https://www.youtube.com/embed/uIhDWFafoA4?autoplay=1&mute=1"
+                        allow="autoplay"
+                        title="Notion Card started"
+                        aria-hidden="true"
+                    />
+                </div>
+                {/* <div className="my-10 w-full md:my-0">
                     <Image
                         className="mx-auto w-full rounded-lg shadow-xl ring-1 ring-black ring-opacity-5"
                         src="/demo.png"
@@ -38,7 +43,7 @@ export default function Home() {
                         width={1238}
                         height={792}
                     />
-                </div>
+                </div> */}
             </div>
         </main>
     );
