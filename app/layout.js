@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
     title: "Notion Card",
-    description: "Craft Beautiful Content Instantly.",
+    description: "Craft Beautiful Notion Content Instantly.",
 };
 
 export default function RootLayout({ children }) {
