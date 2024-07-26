@@ -1,3 +1,4 @@
+import { YouTubeEmbed } from "@next/third-parties/google";
 export default function Home() {
     return (
         <main className="">
@@ -27,9 +28,14 @@ export default function Home() {
                     </div>
                 </div>
                 <div className="my-10 w-full md:my-0">
+                    {/* <YouTubeEmbed
+                        videoid="uIhDWFafoA4"
+                        height={400}
+                        params="controls=1&autoplay=1&mute=1&loop=1&playlist=uIhDWFafoA4"
+                    /> */}
                     <iframe
                         className="aspect-video self-stretch md:min-h-96 mx-auto w-full rounded-lg shadow-xl ring-1 ring-black ring-opacity-5"
-                        src="https://www.youtube.com/embed/uIhDWFafoA4?autoplay=1&mute=1"
+                        src="https://www.youtube.com/embed/uIhDWFafoA4?controls=0&autoplay=1&mute=1&loop=1&playlist=uIhDWFafoA4"
                         allow="autoplay"
                         title="Notion Card started"
                         aria-hidden="true"
