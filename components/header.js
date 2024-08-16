@@ -29,7 +29,7 @@ const links = [
     },
     {
         label: "Twitter",
-        href: "https://twitter.com/your-twitter-handle", // Replace with your Twitter URL
+        href: "https://x.com/boluodx", // Replace with your Twitter URL
         icon: faXTwitter,
         external: true, // Custom property to mark external links
     },
