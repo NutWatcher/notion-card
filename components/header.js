@@ -2,27 +2,39 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
 const links = [
+    // {
+    //     label: "Features",
+    //     href: "#Features",
+    // },
+    // {
+    //     label: "Pricing",
+    //     href: "#Pricing",
+    // },
+    // {
+    //     label: "Wall of Love",
+    //     href: "#WallOfLove",
+    // },
+    // {
+    //     label: "FAQ",
+    //     href: "#FAQ",
+    // },
     {
-        label: "Features",
-        href: "#Features",
+        label: "Feedback",
+        href: "https://noiton-card.canny.io/feature-requests",
+        external: true,
     },
     {
-        label: "Pricing",
-        href: "#Pricing",
-    },
-    {
-        label: "Wall of Love",
-        href: "#WallOfLove",
-    },
-    {
-        label: "FAQ",
-        href: "#FAQ",
+        label: "Twitter",
+        href: "https://twitter.com/your-twitter-handle", // Replace with your Twitter URL
+        icon: faXTwitter,
+        external: true, // Custom property to mark external links
     },
 ];
-const siteConfig = {
-    name: "Notion Card",
-};
+
 export default function Home() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     return (
@@ -36,18 +48,19 @@ export default function Home() {
                         className="flex items-center space-x-1 font-bold"
                     >
                         <Image
-                            alt={siteConfig.name}
+                            alt="Notion Card"
                             src="/logo.svg"
                             className="w-8 h-8"
                             width={32}
                             height={32}
                         />
                         <span className="text-gray-950 dark:text-gray-300 hidden md:block">
-                            {siteConfig.name}
+                            Notion Card
                         </span>
                     </Link>
                 </div>
 
+                {/* Desktop Navigation */}
                 <ul className="hidden items-center gap-6 md:flex">
                     {links.map((link) => (
                         <li key={link.label}>
@@ -55,23 +68,35 @@ export default function Home() {
                                 href={link.href}
                                 aria-label={link.label}
                                 title={link.label}
-                                className="tracking-wide transition-colors duration-200 font-norma"
+                                className="tracking-wide transition-colors duration-200 font-norma hover:text-blue-500 flex items-center"
+                                target={link.external ? "_blank" : "_self"}
+                                rel={link.external ? "noopener noreferrer" : ""}
                             >
-                                {link.label}
+                                {link.icon ? (
+                                    <FontAwesomeIcon
+                                        icon={link.icon}
+                                        className="text-xl"
+                                    />
+                                ) : (
+                                    link.label
+                                )}
                             </Link>
                         </li>
                     ))}
                 </ul>
 
+                {/* Mobile Navigation */}
                 <div className="md:hidden">
                     <button
                         aria-label="Open Menu"
                         title="Open Menu"
                         className="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline hover:bg-deep-purple-50 focus:bg-deep-purple-50"
                         onClick={() => setIsMenuOpen(true)}
-                    ></button>
+                    >
+                        <FontAwesomeIcon icon={faBars} />
+                    </button>
                     {isMenuOpen && (
-                        <div className="absolute top-0 left-0 w-full z-50">
+                        <div className="absolute top-0 left-0 w-full z-50 bg-white">
                             <div className="p-5 bg-background border rounded shadow-sm">
                                 <div className="flex items-center justify-between mb-4">
                                     <div>
@@ -82,14 +107,14 @@ export default function Home() {
                                             className="inline-flex items-center"
                                         >
                                             <Image
-                                                alt={siteConfig.name}
+                                                alt="Notion Card"
                                                 src="/logo.svg"
                                                 className="w-8 h-8"
                                                 width={32}
                                                 height={32}
                                             />
                                             <span className="ml-2 text-xl font-bold tracking-wide text-gray-950 dark:text-gray-300">
-                                                {siteConfig.name}
+                                                Notion Card
                                             </span>
                                         </Link>
                                     </div>
@@ -99,7 +124,9 @@ export default function Home() {
                                             title="Close Menu"
                                             className="tracking-wide transition-colors duration-200 font-norma"
                                             onClick={() => setIsMenuOpen(false)}
-                                        ></button>
+                                        >
+                                            <FontAwesomeIcon icon={faX} />
+                                        </button>
                                     </div>
                                 </div>
                                 <nav>
@@ -110,12 +137,29 @@ export default function Home() {
                                                     href={link.href}
                                                     aria-label={link.label}
                                                     title={link.label}
-                                                    className="font-medium tracking-wide  transition-colors duration-200 hover:text-deep-purple-accent-400"
+                                                    className="font-medium tracking-wide  transition-colors duration-200 hover:text-deep-purple-accent-400 flex items-center"
+                                                    target={
+                                                        link.external
+                                                            ? "_blank"
+                                                            : "_self"
+                                                    }
+                                                    rel={
+                                                        link.external
+                                                            ? "noopener noreferrer"
+                                                            : ""
+                                                    }
                                                     onClick={() =>
                                                         setIsMenuOpen(false)
                                                     }
                                                 >
-                                                    {link.label}
+                                                    {link.icon ? (
+                                                        <FontAwesomeIcon
+                                                            icon={link.icon}
+                                                            className="text-xl"
+                                                        />
+                                                    ) : (
+                                                        link.label
+                                                    )}
                                                 </Link>
                                             </li>
                                         ))}
